@@ -6,9 +6,14 @@
 
 module.exports = (robot) ->
   trafini = "http://localhost/"
+  apikey = "your_api_key"
+
   query = (args, handler) ->
     robot.http(trafini)
-      .query({q: JSON.stringify(args)})
+      .query({
+        q: JSON.stringify(args),
+        apikey: apikey
+      })
       .post() (err, res, body) ->
         handler body
   isOneByteChar = (ch) ->
